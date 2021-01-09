@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+  crossorigin="anonymous"
+/>
+
+  <style>
+    @font-face {
+    font-family: 'promptregular';
+    src: url('./public/file/font/prompt-regular-webfont.eot');
+    src: url('./public/file/font/prompt-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./public/file/font/prompt-regular-webfont.woff2') format('woff2'),
+         url('./public/file/font/prompt-regular-webfont.woff') format('woff'),
+         url('./public/file/font/prompt-regular-webfont.ttf') format('truetype'),
+         url('./public/file/font/prompt-regular-webfont.svg#promptregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+   }
+
+    body {
+      font-family: 'promptregular';
+    }
+
+    ul.a {
+      list-style-position: outside;
+      text-align: justify;
+    }
+    .keyword {
+      border: 1px solid #e2dfdf;
+      border-radius : 15px;
+      padding : 2px 14px;
+      margin-top : 3px;
+      color : #fff;
+      font-size: 10px;
+      display : inline-block;
+      
+    }
+  </style>
+</head>
+<body>
+  <div style="margin: 0px;">
+    <div class="col-4" style="
+    background-color: #2f3b7a;
+    position: absolute;
+    height: 7.77in;
+  ">
+<div style="margin: 40px 20px 40px 40px;">
+  <center>
+    <img src="<%= objData.researcherPicture %>" width="90%" style="border-radius: 10px;" />
+  </center>
+  <br />
+  <p style="color: #ffffff; text-align: justify; font-size: 10px;">
+    Address:<%= objData.Address %>
+  </p>
+  <span style="color: #ffffff; font-size: 10px;">
+    <%=objData.email %>
+  </span><br/>
+  <% if (objData.web !== '') { %>
+    <span style="color: #ffffff; font-size: 10px;">
+      <%= objData.web %>
+    </span>
+    <% }%>
+
+    <% if (objData.keywords_EN.length > 0) { %>
+  <br/><br/>
+  <b style="color: #ffffff;font-size: 12px;">SKILLS</b>
+  <hr style="
+        margin-top: 0rem;
+        border-top: 1px solid rgb(255, 255, 255);
+      " />
+  <b style="color: #ffffff; font-size: 10px;">Area of Expertise</b><br/>
+  <% objData.keywords_EN.forEach(keyword => {%>
+  <span class="keyword"><%= keyword %></span>
+  <%  });%>
+  <% }%>
+  <br />
+</div>
+</div>
+    <div>
+      <div class="col-8" style="
+            background-color: #ffffff;
+            position: absolute;
+            right: 0px;
+          ">
+        <div style="margin: 40px 40px 40px 0px;">
+          <h1 style="color: #2f3b7a; font-weight: 900; font-size: 22px;"><%= objData.researcherName %></h1>
+          <hr />
+
+      
+          <b style="color: #2f3b7a; font-size: 12px;">PROFESSIONAL SUMMARY</b>
+          <hr style="margin-top: 0rem;" />
+          <span style="font-size: 10px;"></h1>TOTAL PUBLICATIONS <b><%= objData.documentCount %></b> TOTAL CITATIONS <b><%= objData.citationCount %></b>
+          H-INDEX <b><%= objData.hIndex %></b></span><br /><br />
+
+          
+          <b style="color: #2f3b7a; font-size: 12px;">PUBLICATION</b>
+          <hr style="margin-top: 0rem;" />
+          <% if (objData.publicationsInter.length > 0) { %>
+          <b style="font-size: 12px;">International Publications</b><br />
+          <ul class="a">
+         
+                <% objData.publicationsInter.forEach(publication => {%>
+            <li style="margin-bottom: 10px; font-size: 10px;">
+              <span style="text-align: justify; font-size: 10px;">
+                <%= publication.name %>.&nbsp;
+                <i>
+                  <%= publication.owner %>.&nbsp;
+                </i>
+                (<%= publication.year %>).&nbsp;<%= publication.publicationLocation %>.&nbsp;
+                
+                <% if (publication.volumn !== '') { %>
+                <%= publication.volumn %>.&nbsp;
+                <% }%>
+                <% if (publication.page !== '') { %>
+                  pp.&nbsp;<%= publication.page %>.
+                  <% }%>
+              </span>
+            </li>
+            <%  });%>
+            <% }%>
+          </ul>
+
+          <% if (objData.publicationsConferance.length > 0) { %>
+          <b style="font-size: 12px;">Conferance</b><br />
+          <ul class="a">
+            
+            <% objData.publicationsConferance.forEach(publication => {%>
+            <li style="margin-bottom: 10px;font-size: 10px;">
+              <span style="text-align: justify; font-size: 10px;">
+                <%= publication.name %>.&nbsp;
+                <i>
+                  <%= publication.owner %>.&nbsp;
+                </i>
+                (<%= publication.year %>).&nbsp;<%= publication.publicationLocation %>,&nbsp;<%= publication.conferenceLocation %>.&nbsp;<%= publication.bookPublisher %>
+                <% if (publication.page !== '') { %>
+                pp.&nbsp;<%= publication.page %>.
+                <% }%>
+              </span>
+            </li>
+            <%  });%>
+            <% }%>
+          </ul>
+
+          <br />
+          <b style="color: #2f3b7a; font-size: 12px;">EDUCATION</b>
+          <hr style="margin-top: 0rem; font-size: 10px;" />
+          <p style="font-size: 10px;">
+            <%= objData.education.degreeName_EN %>,&nbsp;<%= objData.education.universityName_EN %>,&nbsp;<%= objData.education.graduationYear - 543 %>,&nbsp;<%= objData.education.universityCountry_EN %>
+          </p><br/>
+
+          <% if (objData.awards.length > 0) { %>
+          <b style="color: #2f3b7a; font-size: 12px;">AWARDS</b>
+          <hr style="margin-top: 0rem; font-size: 10px;" />
+          <ul class="a">
+           
+              <% objData.awards.forEach(award => {%>
+             
+                <li style="font-size: 10px;">
+                  <span style="text-align: justify; margin-bottom: 10px; font-size: 10px;">
+                    <%= award.name %>,&nbsp;
+                    <% if (award.organizer !== "") { %>
+                      <%= award.organizer %>,&nbsp;
+                      <% }%>
+                      <% if (award.location !== "") { %>
+                        <%= award.location %>,&nbsp;
+                        <% }%>
+                        <% if (award.country !== "") { %>
+                          <%= award.country %>,&nbsp;
+                          <% }%>
+                          <%= award.work %>.
+                  </span>
+                </li>
+              <%  });%>
+              <% }%>
+          </ul>
+
+
+        </div>
+      </div>
+     
+    </div>
+  </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</html>

@@ -1,0 +1,22 @@
+version: '3'
+services:
+  mongo:
+    container_name: catcafe_mongo
+    image: mongo
+    restart: always
+    ports:
+    - '27017:27017'
+    volumes:
+    - mongo-vol:/data/db
+  app:
+    container_name: catcafe_server
+    restart: always
+    build: .
+    ports:
+      - '5713:5713'
+    volumes:
+      - ./public:/usr/src/app/public
+    depends_on:
+      - mongo
+volumes:
+  mongo-vol:
