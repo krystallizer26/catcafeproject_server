@@ -98,18 +98,18 @@ app.use(function (req, res, next) {
 });
 
 //partial API
-app.use('/api', require('./app/route/testAPI.js'));
-app.use('/api', require('./app/route/researcherAPI.js'));
-app.use('/api', require('./app/route/publicationAPI.js'));
-app.use('/api', require('./app/route/developmentAPI.js'));
-app.use('/api', require('./app/route/intPropAPI.js'));
-app.use('/api', require('./app/route/researchFundAPI.js'));
-app.use('/api', require('./app/route/rewardAPI.js'));
-app.use('/api', require('./app/route/thesisAPI.js'));
-app.use('/api', require('./app/route/researcherAPI_dataUpdate.js'));
-app.use('/api', require('./app/route/userAPI.js'));
-app.use('/api/auth', require('./app/route/authAPI.js'));
-app.use('/api', require('./app/service/fileUpload.js'));
+// app.use('/api', require('./app/route/testAPI.js'));
+// app.use('/api', require('./app/route/researcherAPI.js'));
+// app.use('/api', require('./app/route/publicationAPI.js'));
+// app.use('/api', require('./app/route/developmentAPI.js'));
+// app.use('/api', require('./app/route/intPropAPI.js'));
+// app.use('/api', require('./app/route/researchFundAPI.js'));
+// app.use('/api', require('./app/route/rewardAPI.js'));
+// app.use('/api', require('./app/route/thesisAPI.js'));
+// app.use('/api', require('./app/route/researcherAPI_dataUpdate.js'));
+// app.use('/api', require('./app/route/userAPI.js'));
+// app.use('/api/auth', require('./app/route/authAPI.js'));
+// app.use('/api', require('./app/service/fileUpload.js'));
 
 // Error handler
 app.use(function (err, req, res, next) {
